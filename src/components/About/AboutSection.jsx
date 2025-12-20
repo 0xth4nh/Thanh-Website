@@ -12,7 +12,7 @@ const AboutSection = () => {
     <>
       <SectionTitle>ABOUT ME</SectionTitle>
       <SummaryText>
-        I'm a CS student at Georgia Tech with specialization in System
+        I'm an incoming SWE @ coinbase, specifically performing smart contracts work on base. I graduated as from Georgia Tech's CS program with specialization in System
         Architecture and Theory.
       </SummaryText>
       <SummaryText>Currently, I'm super into blockchain and defi for at least the next 5 years.</SummaryText>
