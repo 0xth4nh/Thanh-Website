@@ -82,7 +82,14 @@ const ExperienceDate = styled.span`
 const experiences = [
   {
     company: "Base",
-    logo: "/assets/logos/base_logo.jpeg",
+    logo: "/assets/logos/base_logo.png",
+    url: "https://www.base.org/",
+    role: "SWE, Smart Contract Engineer",
+    date: "Summer 2026",
+  },
+  {
+    company: "Base",
+    logo: "/assets/logos/base_logo.png",
     url: "https://www.base.org/",
     role: "Protocol Intern",
     date: "Summer 2025",
