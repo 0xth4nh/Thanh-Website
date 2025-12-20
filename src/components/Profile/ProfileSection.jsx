@@ -146,7 +146,7 @@ const ProfileSection = () => {
             thành.eth
           </a>
         </h1>
-        <p>incoming SWE @ base| cs @ georgia tech</p>
+        <p>incoming SWE @ base, prev: cs @ georgia tech</p>
       </ProfileInfo>
     </ProfileContainer>
   );
