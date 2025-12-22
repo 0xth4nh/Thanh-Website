@@ -67,7 +67,7 @@ const ContactSection = () => {
           on Twitter or send an email to me at
           <StyledSpan>me@thanh.sh</StyledSpan>. See my work mostly at
           <StyledLink
-            href="https://github.com/0xekkila"
+            href="https://github.com/0xth4nh"
             target="_blank"
             rel="noopener noreferrer"
           >
