@@ -1,152 +1,126 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import styled from "styled-components";
-import AnimatedSection from "../components/AnimatedSection";
-import CryptoPrice from "../components/EthPrice";
 import AnimatedBackground from "../components/Background/AnimatedBackground";
-import HomeButton from "../components/HomeButton";
+import Navbar from "../components/Navbar";
 import { blogContent } from "../data/blogData";
 
-const PageContainer = styled.div`
-  min-height: 100vh;
-  background: transparent;
-  padding-top: 40px;
+const Shell = styled.div`
   position: relative;
-  z-index: 1;
+  z-index: 3;
+  max-width: 1120px;
+  margin: 0 auto;
 `;
 
-const ContentWrapper = styled.div`
-  max-width: 800px;
+const Article = styled.article`
+  max-width: 760px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 56px 40px 80px;
+  font-family: var(--sans);
+
+  @media (max-width: 960px) { padding: 40px 24px 60px; }
 `;
 
 const BackLink = styled(Link)`
-  color: #00b2ff;
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  margin-bottom: 30px;
-  font-weight: 500;
-  transition: all 0.3s ease;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-dim);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-bottom: 36px;
+  transition: color .2s;
 
-  &:before {
-    content: "←";
-    transition: transform 0.3s ease;
-  }
-
-  &:hover {
-    color: #60d9ff;
-
-    &:before {
-      transform: translateX(-5px);
-    }
-  }
+  &::before { content: "←"; }
+  &:hover { color: var(--ink); }
 `;
 
-const PostHeader = styled.div`
+const Header = styled.header`
   margin-bottom: 40px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+
+  h1 {
+    font-family: var(--sans);
+    color: var(--ink);
+    font-size: clamp(30px, 4vw, 44px);
+    font-weight: 500;
+    letter-spacing: -.02em;
+    line-height: 1.1;
+    margin: 0 0 18px;
+  }
 `;
 
-const PostTitle = styled.h1`
-  color: #ffffff;
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 20px;
-  line-height: 1.2;
-`;
-
-const PostMeta = styled.div`
+const Meta = styled.div`
   display: flex;
-  gap: 30px;
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 0.9rem;
   flex-wrap: wrap;
-`;
+  gap: 12px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-dim);
+  letter-spacing: .04em;
 
-const MetaItem = styled.span`
-  display: flex;
-  align-items: center;
-  gap: 5px;
-`;
-
-const PostContent = styled.div`
-  color: rgba(255, 255, 255, 0.9);
-  line-height: 1.8;
-  font-size: 1.1rem;
-
-  p {
-    margin-bottom: 20px;
+  span {
+    border: 1px solid var(--line);
+    padding: 3px 8px;
   }
+`;
 
+const Content = styled.div`
+  color: var(--ink-dim);
+  line-height: 1.75;
+  font-size: 16px;
+
+  p { margin: 0 0 18px; }
   h2 {
-    color: #ffffff;
-    font-size: 1.8rem;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    font-weight: 600;
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: -.01em;
+    margin: 40px 0 16px;
   }
-
   h3 {
-    color: #ffffff;
-    font-size: 1.4rem;
-    margin-top: 30px;
-    margin-bottom: 15px;
-    font-weight: 600;
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 18px;
+    font-weight: 500;
+    margin: 28px 0 12px;
   }
-
-  ul,
-  ol {
-    margin-bottom: 20px;
-    padding-left: 30px;
-  }
-
-  li {
-    margin-bottom: 10px;
-  }
-
-  code {
-    background: rgba(0, 178, 255, 0.1);
-    color: #00b2ff;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-family: "Consolas", "Monaco", monospace;
-    font-size: 0.9em;
-  }
-
-  pre {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    padding: 20px;
-    overflow-x: auto;
-    margin-bottom: 20px;
-
-    code {
-      background: none;
-      color: rgba(255, 255, 255, 0.9);
-      padding: 0;
-    }
-  }
-
-  blockquote {
-    border-left: 4px solid #00b2ff;
-    padding-left: 20px;
-    margin: 20px 0;
-    font-style: italic;
-    color: rgba(255, 255, 255, 0.7);
-  }
+  ul, ol { margin: 0 0 20px; padding-left: 22px; }
+  li { margin-bottom: 8px; }
+  strong, b { color: var(--ink); font-weight: 500; }
 
   a {
-    color: #00b2ff;
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-    transition: all 0.3s ease;
+    color: var(--ink);
+    border-bottom: 1px solid var(--line-2);
+    transition: border-color .2s;
+  }
+  a:hover { border-color: var(--ink); }
 
-    &:hover {
-      color: #60d9ff;
-      border-bottom-color: #60d9ff;
-    }
+  code {
+    background: var(--bg-2);
+    color: var(--ink);
+    border: 1px solid var(--line);
+    padding: 1px 6px;
+    font-family: var(--mono);
+    font-size: .9em;
+  }
+  pre {
+    background: var(--bg-1);
+    border: 1px solid var(--line);
+    padding: 16px;
+    overflow-x: auto;
+    margin: 0 0 20px;
+    code { background: none; border: 0; padding: 0; }
+  }
+  blockquote {
+    border-left: 2px solid var(--ink);
+    padding-left: 16px;
+    margin: 20px 0;
+    color: var(--ink-dim);
   }
 `;
 
@@ -158,26 +132,14 @@ const BlogPostPage = () => {
     return (
       <>
         <AnimatedBackground />
-        <HomeButton />
-        <CryptoPrice />
-        <PageContainer>
-          <ContentWrapper>
-            <AnimatedSection>
-              <h1 style={{ color: "#ffffff", marginBottom: "20px" }}>
-                Post Not Found
-              </h1>
-              <p style={{ color: "rgba(255, 255, 255, 0.7)" }}>
-                Sorry, the blog post you're looking for doesn't exist.
-              </p>
-              <BackLink
-                to="/blog"
-                style={{ marginTop: "20px", display: "inline-flex" }}
-              >
-                Back to Blog
-              </BackLink>
-            </AnimatedSection>
-          </ContentWrapper>
-        </PageContainer>
+        <Navbar />
+        <Shell>
+          <Article>
+            <BackLink to="/blog">Back to Blog</BackLink>
+            <Header><h1>Post Not Found</h1></Header>
+            <Content><p>Sorry, the blog post you're looking for doesn't exist.</p></Content>
+          </Article>
+        </Shell>
       </>
     );
   }
@@ -185,26 +147,21 @@ const BlogPostPage = () => {
   return (
     <>
       <AnimatedBackground />
-      <HomeButton />
-      <CryptoPrice />
-      <PageContainer>
-        <ContentWrapper>
-          <AnimatedSection>
-            <BackLink to="/blog">Back to Blog</BackLink>
-
-            <PostHeader>
-              <PostTitle>{post.title}</PostTitle>
-              <PostMeta>
-                <MetaItem>{post.date}</MetaItem>
-                <MetaItem>{post.readTime}</MetaItem>
-                <MetaItem>{post.category}</MetaItem>
-              </PostMeta>
-            </PostHeader>
-
-            <PostContent dangerouslySetInnerHTML={{ __html: post.content }} />
-          </AnimatedSection>
-        </ContentWrapper>
-      </PageContainer>
+      <Navbar />
+      <Shell>
+        <Article>
+          <BackLink to="/blog">Back to Blog</BackLink>
+          <Header>
+            <h1>{post.title}</h1>
+            <Meta>
+              <span>{post.date}</span>
+              <span>{post.readTime}</span>
+              <span>{post.category}</span>
+            </Meta>
+          </Header>
+          <Content dangerouslySetInnerHTML={{ __html: post.content }} />
+        </Article>
+      </Shell>
     </>
   );
 };

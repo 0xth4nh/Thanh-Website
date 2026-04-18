@@ -1,84 +1,74 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { SectionTitle, StyledLink, StyledSpan } from "../common/CommonStyles";
+import { Block, SectionTitle } from "../common/CommonStyles";
+import { blogPosts } from "../../data/blogData";
 
-const ContactContainer = styled.div`
-  width: 100%;
-`;
+const Post = styled(Link)`
+  display: grid;
+  grid-template-columns: 110px 1fr 120px 40px;
+  gap: 24px;
+  align-items: center;
+  padding: 22px 32px;
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+  transition: background .15s;
+  color: var(--ink);
 
-const SummaryText = styled.p`
-  margin-bottom: 10px;
-  width: 100%;
-`;
+  &:last-child { border-bottom: 0; }
+  &:hover { background: var(--bg-1); }
+  &:hover .arr { transform: translateX(4px); color: var(--ink); }
 
-const InternalLink = styled(Link)`
-  color: #ffffff;
-  font-weight: 600;
-  position: relative;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  margin-left: 6px;
-  cursor: pointer;
-
-  &::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 1px;
-    bottom: 1px;
-    left: 0;
-    background-color: #00c2a0;
-    transform-origin: bottom right;
-    transition: transform 0.3s ease;
+  .date {
+    color: var(--ink-dim);
+    font-size: 11px;
+    letter-spacing: .04em;
+  }
+  .title {
+    font-family: var(--sans);
+    font-size: 16.5px;
+    color: var(--ink);
+    font-weight: 500;
+    letter-spacing: -.005em;
+  }
+  .tag {
+    font-size: 10.5px;
+    color: var(--ink-dim);
+    border: 1px solid var(--line-2);
+    padding: 3px 8px;
+    justify-self: start;
+  }
+  .arr {
+    color: var(--ink-dimmer);
+    justify-self: end;
+    transition: transform .18s, color .18s;
   }
 
-  &:hover {
-    color: #00e0b8;
-
-    &::after {
-      background-color: #00e0b8;
-    }
+  @media (max-width: 860px) {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 20px 20px;
+    .arr { display: none; }
   }
 `;
 
-const ContactSection = () => {
-  return (
-    <>
-      <SectionTitle>HOW TO REACH ME</SectionTitle>
-      <ContactContainer>
-        <SummaryText>
-          Connect with me on
-          <StyledLink
-            href="https://www.linkedin.com/in/thanhtrinh03/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            LinkedIn
-          </StyledLink>
-          ,
-          <StyledLink
-            href="https://x.com/0xthanh"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            @0xthanh
-          </StyledLink>{" "}
-          on Twitter or send an email to me at
-          <StyledSpan>me@thanh.sh</StyledSpan>. See my work mostly at
-          <StyledLink
-            href="https://github.com/0xth4nh"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Github
-          </StyledLink>
-          , or read my
-          <InternalLink to="/blog">Blog</InternalLink>
-        </SummaryText>
-      </ContactContainer>
-    </>
-  );
-};
+const ContactSection = () => (
+  <Block id="writing">
+    <SectionTitle
+      idx="§03 / WRITING"
+      meta={`${blogPosts.length} ENTRIES`}
+    />
+    <div>
+      {blogPosts.map((post) => (
+        <Post key={post.id} to={`/blog/${post.id}`}>
+          <div className="date">{post.date}</div>
+          <div className="title">{post.title}</div>
+          <div className="tag">{post.category}</div>
+          <div className="arr">→</div>
+        </Post>
+      ))}
+    </div>
+  </Block>
+);
 
 export default ContactSection;

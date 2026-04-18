@@ -1,165 +1,157 @@
 import React from "react";
 import styled from "styled-components";
-import { SectionTitle } from "../common/CommonStyles";
+import { Block, SectionTitle } from "../common/CommonStyles";
 
-const ExperienceContainer = styled.div`
-  width: 100%;
-`;
+const Job = styled.article`
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 32px;
+  align-items: start;
+  padding: 30px 32px;
+  border-bottom: 1px solid var(--line);
+  transition: background .2s;
 
-const ExperienceItem = styled.div`
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  &:last-child { border-bottom: 0; }
+  &:hover { background: var(--bg-1); }
 
-  h4 {
-    font-weight: 400;
+  .when {
+    font-size: 11px;
+    color: var(--ink-dim);
+    letter-spacing: .04em;
+    padding-top: 4px;
+  }
+  .when .now {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 1px 6px;
+    font-size: 9.5px;
+    background: var(--ink);
+    color: var(--bg);
+    letter-spacing: .1em;
+  }
+
+  .core h3 {
+    font-family: var(--sans);
+    font-size: 20px;
+    margin: 0 0 4px;
+    font-weight: 500;
+    letter-spacing: -.01em;
+    color: var(--ink);
+  }
+  .core .co {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--ink-dim);
+    margin-bottom: 14px;
+  }
+  .core .co a {
+    color: var(--ink);
+    font-weight: 500;
+    border-bottom: 1px solid var(--line-2);
+    transition: border-color .2s;
+  }
+  .core .co a:hover { border-color: var(--ink); }
+  .core p {
+    font-family: var(--sans);
+    font-size: 14.5px;
+    color: var(--ink-dim);
     margin: 0;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-
-    .company {
-      color: #ffffff;
-      font-weight: 600;
-      position: relative;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      margin-left: 6px;
-      cursor: pointer;
-
-      &::after {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 1px;
-        bottom: 1px;
-        left: 0;
-        background-color: #00c2a0;
-        transform-origin: bottom right;
-        transition: transform 0.3s ease;
-      }
-
-      &:hover {
-        color: #00e0b8;
-
-        &::after {
-          background-color: #00e0b8;
-        }
-      }
-    }
+    line-height: 1.6;
+    max-width: 64ch;
   }
-`;
 
-const CompanyLogo = styled.div`
-  width: 30px;
-  height: 30px;
-  border-radius: 6px;
-  background-color: rgba(255, 255, 255, 0.1);
-  margin-right: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  @media (max-width: 860px) {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 26px 20px;
   }
-`;
-
-const ExperienceContent = styled.div`
-  flex: 1;
-`;
-
-const ExperienceDate = styled.span`
-  color: #9ca3af;
-  font-size: 0.9rem;
-  margin-left: 15px;
 `;
 
 const experiences = [
   {
     company: "Base",
-    logo: "/assets/logos/base_logo.png",
     url: "https://www.base.org/",
     role: "SWE, Smart Contract Engineer",
-    date: "Summer 2026",
+    date: "2026 — INCOMING",
+    location: "Chicago",
+    desc: "Joining the Base protocol team to build and audit smart contracts powering Coinbase's L2 — wallet primitives, paymaster logic, and the infra between L1 and L2.",
+    now: true,
   },
   {
     company: "Base",
-    logo: "/assets/logos/base_logo.png",
     url: "https://www.base.org/",
     role: "Protocol Intern",
-    date: "Summer 2025",
+    date: "2025 · SUMMER",
+    location: "Remote",
+    desc: "Worked on protocol-level tooling for Base. Returned full-time after graduation.",
   },
   {
     company: "Infinifi",
-    logo: "/assets/logos/infinifi_logo.png",
     url: "https://infinifi.xyz/",
     role: "Founding Intern",
-    date: "Spring 2025",
+    date: "2025 · SPRING",
+    location: "Remote",
+    desc: "Early engineering on a DeFi yield protocol — contributed to contracts, testing, and deployment flow.",
   },
   {
     company: "Cambrian Network",
-    logo: "/assets/logos/cambrian_logo.jpg",
     url: "https://www.cambrian.org/",
     role: "Intern",
-    date: "Fall 2024",
+    date: "2024 · FALL",
+    location: "Remote",
+    desc: "On-chain data infrastructure — indexing and analytics plumbing.",
   },
   {
-    company: "Semiotics Lab",
-    logo: "/assets/logos/semioticlabs_logo.jpg",
+    company: "Semiotic Labs",
     url: "https://semiotic.ai/",
     role: "Intern",
-    date: "Fall 2024",
+    date: "2024 · FALL",
+    location: "Remote",
+    desc: "Research-flavored work at the intersection of ML and web3.",
   },
   {
     company: "Revest Finance",
-    logo: "/assets/logos/revest_logo.jpeg",
     url: "https://revestlabs.com/",
     role: "Intern",
-    date: "Summer 2024",
+    date: "2024 · SUMMER",
+    location: "Remote",
+    desc: "Smart contract development on a DeFi primitives protocol.",
   },
   {
     company: "Revest Finance",
-    logo: "/assets/logos/revest_logo.jpeg",
     url: "https://revestlabs.com/",
     role: "Intern",
-    date: "Summer 2023",
+    date: "2023 · SUMMER",
+    location: "Remote",
+    desc: "First internship in crypto — shipped contract work and learned how a small team ships fast.",
   },
 ];
 
-const ExperienceSection = () => {
-  return (
-    <>
-      <SectionTitle>EXPERIENCE</SectionTitle>
-      <ExperienceContainer>
-        {experiences.map((exp, index) => (
-          <ExperienceItem key={index}>
-            <CompanyLogo>
-              <img src={exp.logo} alt={exp.company} />
-            </CompanyLogo>
-            <ExperienceContent>
-              <h4>
-                {exp.role} @{" "}
-                <a
-                  href={exp.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="company"
-                >
-                  {exp.company}
-                </a>
-              </h4>
-            </ExperienceContent>
-            <ExperienceDate>{exp.date}</ExperienceDate>
-          </ExperienceItem>
-        ))}
-      </ExperienceContainer>
-    </>
-  );
-};
+const ExperienceSection = () => (
+  <Block id="work">
+    <SectionTitle idx="§02 / EXPERIENCE" />
+    <div>
+      {experiences.map((exp, i) => (
+        <Job key={i}>
+          <div className="when">
+            {exp.date}
+            {exp.now && <span className="now">NOW</span>}
+          </div>
+          <div className="core">
+            <h3>{exp.role}</h3>
+            <div className="co">
+              <a href={exp.url} target="_blank" rel="noopener noreferrer">
+                {exp.company}
+              </a>
+              {" · "}
+              {exp.location}
+            </div>
+            <p>{exp.desc}</p>
+          </div>
+        </Job>
+      ))}
+    </div>
+  </Block>
+);
 
 export default ExperienceSection;

@@ -1,134 +1,128 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { SectionTitle } from "../components/common/CommonStyles";
-import AnimatedSection from "../components/AnimatedSection";
-import CryptoPrice from "../components/EthPrice";
 import AnimatedBackground from "../components/Background/AnimatedBackground";
-import HomeButton from "../components/HomeButton";
+import Navbar from "../components/Navbar";
+import { Block, SectionTitle } from "../components/common/CommonStyles";
 import { blogPosts } from "../data/blogData";
 
-const PageContainer = styled.div`
-  min-height: 100vh;
-  background: transparent;
-  padding-top: 40px; /* Reduced padding since no navbar */
+const Shell = styled.div`
   position: relative;
-  z-index: 1;
-`;
-
-const ContentWrapper = styled.div`
-  max-width: 800px;
+  z-index: 3;
+  max-width: 1120px;
   margin: 0 auto;
-  padding: 40px 20px;
 `;
 
-const BlogGrid = styled.div`
+const Lede = styled.div`
+  padding: 96px 32px 72px;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--sans);
+
+  h1 {
+    font-weight: 400;
+    font-size: clamp(36px, 5vw, 60px);
+    letter-spacing: -.03em;
+    line-height: 1;
+    margin: 0 0 18px;
+  }
+  p {
+    color: var(--ink-dim);
+    font-size: 16.5px;
+    max-width: 60ch;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 860px) { padding: 64px 20px 48px; }
+`;
+
+const Post = styled(Link)`
   display: grid;
-  gap: 30px;
-  margin-top: 30px;
-`;
-
-const BlogCard = styled(Link)`
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  padding: 30px;
-  transition: all 0.3s ease;
-  display: block;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: #00b2ff;
-    transform: translateY(-2px);
-  }
-`;
-
-const BlogTitle = styled.h2`
-  color: #ffffff;
-  margin-bottom: 15px;
-  font-size: 1.5rem;
-  font-weight: 600;
-`;
-
-const BlogExcerpt = styled.p`
-  color: rgba(255, 255, 255, 0.7);
-  line-height: 1.6;
-  margin-bottom: 15px;
-`;
-
-const BlogMeta = styled.div`
-  display: flex;
-  gap: 20px;
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 0.9rem;
-`;
-
-const MetaItem = styled.span`
-  display: flex;
+  grid-template-columns: 110px 1fr 120px 40px;
+  gap: 24px;
   align-items: center;
-  gap: 5px;
-`;
+  padding: 22px 32px;
+  border-bottom: 1px solid var(--line);
+  transition: background .15s;
+  color: var(--ink);
 
-const ReadMore = styled.span`
-  color: #00b2ff;
-  font-weight: 500;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  margin-top: 10px;
+  &:last-child { border-bottom: 0; }
+  &:hover { background: var(--bg-1); }
+  &:hover .arr { transform: translateX(4px); color: var(--ink); }
 
-  &:after {
-    content: "→";
-    transition: transform 0.3s ease;
+  .date {
+    color: var(--ink-dim);
+    font-size: 11px;
+    letter-spacing: .04em;
+  }
+  .title {
+    font-family: var(--sans);
+    font-size: 16.5px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .excerpt {
+    font-family: var(--sans);
+    font-size: 13.5px;
+    color: var(--ink-dim);
+    line-height: 1.55;
+    margin-top: 6px;
+    max-width: 72ch;
+  }
+  .tag {
+    font-size: 10.5px;
+    color: var(--ink-dim);
+    border: 1px solid var(--line-2);
+    padding: 3px 8px;
+    justify-self: start;
+  }
+  .arr {
+    color: var(--ink-dimmer);
+    justify-self: end;
+    transition: transform .18s, color .18s;
   }
 
-  ${BlogCard}:hover & {
-    &:after {
-      transform: translateX(5px);
-    }
+  @media (max-width: 860px) {
+    grid-template-columns: 1fr;
+    padding: 22px 20px;
+    gap: 6px;
+    .arr { display: none; }
   }
 `;
 
-const BlogPage = () => {
-  return (
-    <>
-      <AnimatedBackground />
-      <HomeButton />
-      <CryptoPrice />
-      <PageContainer>
-        <ContentWrapper>
-          <AnimatedSection>
-            <SectionTitle style={{ fontSize: "2rem", marginBottom: "10px" }}>
-              Blog
-            </SectionTitle>
-            <p
-              style={{
-                color: "rgba(255, 255, 255, 0.7)",
-                marginBottom: "40px",
-              }}
-            >
-              Thoughts on blockchain, system architecture, gaming, and more.
-            </p>
-
-            <BlogGrid>
-              {blogPosts.map((post) => (
-                <BlogCard key={post.id} to={`/blog/${post.id}`}>
-                  <BlogTitle>{post.title}</BlogTitle>
-                  <BlogExcerpt>{post.excerpt}</BlogExcerpt>
-                  <BlogMeta>
-                    <MetaItem>{post.date}</MetaItem>
-                    <MetaItem>{post.readTime}</MetaItem>
-                    <MetaItem>{post.category}</MetaItem>
-                  </BlogMeta>
-                  <ReadMore>Read more</ReadMore>
-                </BlogCard>
-              ))}
-            </BlogGrid>
-          </AnimatedSection>
-        </ContentWrapper>
-      </PageContainer>
-    </>
-  );
-};
+const BlogPage = () => (
+  <>
+    <AnimatedBackground />
+    <Navbar />
+    <Shell>
+      <Lede>
+        <h1>writing.</h1>
+        <p>
+          Notes on smart contracts, system architecture, and the mechanical parts
+          of crypto.
+        </p>
+      </Lede>
+      <Block>
+        <SectionTitle
+          idx="§01 / POSTS"
+          meta={`${blogPosts.length} ENTRIES`}
+        />
+        <div>
+          {blogPosts.map((post) => (
+            <Post key={post.id} to={`/blog/${post.id}`}>
+              <div className="date">{post.date}</div>
+              <div>
+                <div className="title">{post.title}</div>
+                <div className="excerpt">{post.excerpt}</div>
+              </div>
+              <div className="tag">{post.category}</div>
+              <div className="arr">→</div>
+            </Post>
+          ))}
+        </div>
+      </Block>
+    </Shell>
+  </>
+);
 
 export default BlogPage;

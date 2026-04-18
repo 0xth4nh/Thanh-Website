@@ -1,37 +1,42 @@
-// src/styles/GlobalStyle.js
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-  /* Reset some default styles */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  :root {
+    --bg: #0a0a0a;
+    --bg-1: #0e0e0e;
+    --line: #1e1e1e;
+    --line-2: #262626;
+    --ink: #ececea;
+    --ink-dim: #8a8a87;
+    --ink-dimmer: #555552;
+    --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+    --sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
   }
-  
-  body {
-    font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: #000;
-    color: #fff;
-    line-height: 1.6;
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
   }
-  
-  a {
-    text-decoration: none;
-    color: #3b82f6;
-    transition: color 0.2s;
-  }
-  
-  a:hover {
-    color: #60a5fa;
-  }
-  
+
+  a { text-decoration: none; color: inherit; }
+
+  ::selection { background: #ececea; color: #0a0a0a; }
+
   #root {
     max-width: 100%;
     margin: 0;
     padding: 0;
     text-align: left;
   }
+
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .25; } }
+  @keyframes blink { 50% { opacity: 0; } }
 `;
 
 export default GlobalStyle;
