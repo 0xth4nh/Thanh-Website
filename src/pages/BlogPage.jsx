@@ -69,12 +69,17 @@ const Post = styled(Link)`
     margin-top: 6px;
     max-width: 72ch;
   }
-  .tag {
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-self: start;
+  }
+  .tags span {
     font-size: 10.5px;
     color: var(--ink-dim);
     border: 1px solid var(--line-2);
     padding: 3px 8px;
-    justify-self: start;
   }
   .arr {
     color: var(--ink-dimmer);
@@ -115,7 +120,9 @@ const BlogPage = () => (
                 <div className="title">{post.title}</div>
                 <div className="excerpt">{post.excerpt}</div>
               </div>
-              <div className="tag">{post.category}</div>
+              <div className="tags">
+                {post.tags.map((t) => <span key={t}>{t}</span>)}
+              </div>
               <div className="arr">→</div>
             </Post>
           ))}

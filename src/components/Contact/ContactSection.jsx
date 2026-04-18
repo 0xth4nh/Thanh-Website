@@ -31,12 +31,17 @@ const Post = styled(Link)`
     font-weight: 500;
     letter-spacing: -.005em;
   }
-  .tag {
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-self: start;
+  }
+  .tags span {
     font-size: 10.5px;
     color: var(--ink-dim);
     border: 1px solid var(--line-2);
     padding: 3px 8px;
-    justify-self: start;
   }
   .arr {
     color: var(--ink-dimmer);
@@ -63,7 +68,9 @@ const ContactSection = () => (
         <Post key={post.id} to={`/blog/${post.id}`}>
           <div className="date">{post.date}</div>
           <div className="title">{post.title}</div>
-          <div className="tag">{post.category}</div>
+          <div className="tags">
+            {post.tags.map((t) => <span key={t}>{t}</span>)}
+          </div>
           <div className="arr">→</div>
         </Post>
       ))}

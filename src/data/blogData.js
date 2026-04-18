@@ -7,7 +7,7 @@ export const blogPosts = [
       "A year after MBC inspired me, we built college.xyz — a discovery point for students entering web3. The next generation is hungry to learn, build, and contribute, and it's on us to build the infrastructure that supports them.",
     date: "2025-12-11",
     readTime: "4 min read",
-    category: "Web3",
+    tags: ["student", "crypto"],
   },
   {
     id: 1,
@@ -16,7 +16,7 @@ export const blogPosts = [
       "I got into crypto through hackathons and internships—learning by building, breaking things, and reading docs at 2AM. It was chaotic, but that’s what made it exciting. This guide comprisies all helpful resources I found.",
     date: "2025-06-14",
     readTime: "10 min read",
-    category: "Crypto",
+    tags: ["student", "crypto"],
   },
 ];
 

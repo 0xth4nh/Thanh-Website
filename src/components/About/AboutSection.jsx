@@ -72,8 +72,8 @@ const AboutSection = () => (
           state machines, and interfaces that feel like tools instead of toys.
         </p>
         <p>
-          Outside the terminal: reading, coffee, and writing occasionally about
-          the mechanical parts of crypto.
+          Outside the terminal: I love to play FPS games, collecting watches,
+          and occasionally writing about random stuff.
         </p>
       </Copy>
       <Meta>
