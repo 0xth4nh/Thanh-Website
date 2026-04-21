@@ -54,7 +54,7 @@ const FooterSection = () => (
       <a href="mailto:me@thanh.sh">me@thanh.sh</a>
       <a href="https://x.com/0xthanh" target="_blank" rel="noopener noreferrer">twitter</a>
       <a href="https://github.com/0xth4nh" target="_blank" rel="noopener noreferrer">github</a>
-      <a href="https://www.linkedin.com/in/thanhtrinh03/" target="_blank" rel="noopener noreferrer">linkedin</a>
+      <a href="https://linkedin.com/in/0xthanh" target="_blank" rel="noopener noreferrer">linkedin</a>
     </div>
     <div className="last">
       <div className="sig">— thanh</div>
