@@ -81,7 +81,7 @@ const experiences = [
     company: "College.xyz",
     url: "https://college.xyz/",
     role: "Technical Lead",
-    date: "2025 — NOW",
+    date: "2025",
     location: "Remote",
     desc: "Handling everything technical in my free time — keeping the platform running and shipping new features for students entering web3.",
     now: true,

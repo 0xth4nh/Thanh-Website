@@ -62,18 +62,13 @@ const AboutSection = () => (
     <Body>
       <Copy>
         <p>
-          I'm an incoming software engineer on the <b>smart contracts</b> side of{" "}
-          <b>Coinbase / Base</b>, working on the quieter parts of the wallet and L2
-          stack — the plumbing you only notice when it breaks.
-        </p>
-        <p className="dim">
           Before joining Coinbase, I was at <b>Georgia Tech</b> studying CS with
           a thread in Systems Architecture and Theory, focusing on low-level
           systems and different kinds of proofs and algorithms. I was also a
           smart contract engineer for multiple crypto startups (seen below). In
           my free time, I'm handling everything technical at <b>College.XYZ</b>.
         </p>
-        <p>
+        <p className="dim">
           Outside the terminal: I love to play FPS games, collecting watches,
           and occasionally writing about random stuff.
         </p>

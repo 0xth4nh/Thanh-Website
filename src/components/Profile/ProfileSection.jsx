@@ -113,7 +113,7 @@ const ProfileSection = () => {
         {typed}<span className="cursor" />
       </Headline>
       <Sub>
-        <b>Thanh Trinh</b> — incoming software engineer building smart contracts &amp; on-chain
+        Incoming software engineer building smart contracts &amp; on-chain
         infrastructure on <a href="https://www.base.org/" target="_blank" rel="noopener noreferrer"><b>Base</b></a> at{" "}
         <b>Coinbase</b>.
       </Sub>
