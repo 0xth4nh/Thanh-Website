@@ -68,9 +68,9 @@ const Sub = styled.p`
 `;
 
 const PHRASES = [
-  "ship things that work.",
-  "make things efficient.",
-  "love complicated problems.",
+  "Thanh Trinh",
+  "Thanh",
+  "0xthanh",
 ];
 
 const useTypingHeadline = () => {
@@ -110,12 +110,12 @@ const ProfileSection = () => {
     <Hero id="hero">
       <Eyebrow><span className="live" />SWE · COINBASE / BASE · ATL→CHI</Eyebrow>
       <Headline>
-        <span className="dim">I </span>{typed}<span className="cursor" />
+        {typed}<span className="cursor" />
       </Headline>
       <Sub>
         <b>Thanh Trinh</b> — incoming software engineer building smart contracts &amp; on-chain
         infrastructure on <a href="https://www.base.org/" target="_blank" rel="noopener noreferrer"><b>Base</b></a> at{" "}
-        <b>Coinbase</b>. Recently graduated from <b>Georgia Tech</b>.
+        <b>Coinbase</b>.
       </Sub>
     </Hero>
   );

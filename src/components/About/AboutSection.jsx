@@ -67,9 +67,11 @@ const AboutSection = () => (
           stack — the plumbing you only notice when it breaks.
         </p>
         <p className="dim">
-          Before this I was at <b>Georgia Tech</b> studying CS with a thread in
-          Systems Architecture and Theory. I like low-level systems, deterministic
-          state machines, and interfaces that feel like tools instead of toys.
+          Before joining Coinbase, I was at <b>Georgia Tech</b> studying CS with
+          a thread in Systems Architecture and Theory, focusing on low-level
+          systems and different kinds of proofs and algorithms. I was also a
+          smart contract engineer for multiple crypto startups (seen below). In
+          my free time, I'm handling everything technical at <b>College.XYZ</b>.
         </p>
         <p>
           Outside the terminal: I love to play FPS games, collecting watches,
