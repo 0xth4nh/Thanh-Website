@@ -62,11 +62,17 @@ const AboutSection = () => (
     <Body>
       <Copy>
         <p>
-          Before joining Coinbase, I was at <b>Georgia Tech</b> studying CS with
-          a thread in Systems Architecture and Theory, focusing on low-level
-          systems and different kinds of proofs and algorithms. I was also a
-          smart contract engineer for multiple crypto startups (seen below). In
-          my free time, I'm handling everything technical at <b>College.XYZ</b>.
+          Before Coinbase, I studied CS at <b>Georgia Tech</b> on the Systems
+          Architecture and Theory thread — low-level systems, proofs, and
+          algorithms.
+        </p>
+        <p>
+          Alongside school, I worked as a smart contract engineer for a handful
+          of crypto startups (listed below).
+        </p>
+        <p>
+          In my free time, I handle everything technical at <b>College.XYZ</b>
+          {" "}— building the platform for students entering web3 space.
         </p>
         <p className="dim">
           Outside the terminal: I love to play FPS games, collecting watches,
